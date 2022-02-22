@@ -1,0 +1,16 @@
+#start with the base image 
+FROM node:alpine
+#Define the user directory 
+WORKDIR '/app'
+
+#COPY the most important file 
+COPY ./package.json .
+
+#RUN the command to install all the pre-reqs
+RUN npm install 
+
+#COPY All other source file 
+COPY . .
+
+#Define the start-up command 
+CMD ["npm", "run", "start"]
