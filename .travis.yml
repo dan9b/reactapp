@@ -1,0 +1,12 @@
+#Sswitch to sudo mode
+sudo: required
+
+#Tell Travis to use Docker Service
+services:
+  - docker
+
+before_install:
+  - docker build -t danendra/frontend_web -f Dockerfile.dev
+
+script:
+  - docker run -e CI=true danedra/frontend_web npm run test -- --coverage
